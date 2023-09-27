@@ -1,63 +1,143 @@
 "use strict";
 
-const day = document.getElementById('day');
-const month = document.getElementById('month');
-const year = document.getElementById('year');
-const icon = document.querySelector('.icon');
+// input 
+const dayInput = document.getElementById('day');
+const monthInput = document.getElementById('month');
+const yearInput = document.getElementById('year');
+const dInvalid = document.querySelector('.d-invalid')
+const mInvalid = document.querySelector('.m-invalid')
+const yInvalid = document.querySelector('.y-invalid')
+const label = document.querySelectorAll('.label')
 
+const input = [dayInput, monthInput, yearInput]
+const small = [dInvalid, mInvalid, yInvalid]
+
+dayInput.addEventListener('input', (e)=>{
+    if(dayInput.value > 31){
+        dInvalid.textContent='not a valid date'
+          for(let i=0; i<input.length; i++){
+            input[i].style.borderColor='hsl(0, 100%, 67%)'
+            label.forEach((e)=>{
+                        e.style.color='hsl(0, 100%, 67%)'})
+                    
+          }
+          
+    }
+    else if (dayInput.value === ''){
+        dInvalid.textContent='this field is required'
+        for(let i=0; i<input.length; i++){
+            input[i].style.borderColor='hsl(0, 100%, 67%)'
+            label.forEach((e)=>{
+                        e.style.color='hsl(0, 100%, 67%)'})
+                    
+          }
+
+    }
+    else{
+        dInvalid.textContent=''
+        dayInput.style.borderColor=''
+        for(let i=0; i<input.length; i++){
+            input[i].style.borderColor=''
+            label.forEach((e)=>{
+                        e.style.color=''})
+                    
+          }
+
+    }
+    return;
+})
+
+monthInput.addEventListener('input', (e)=>{
+    if(monthInput.value > 12){
+        mInvalid.textContent='not a valid date'
+        for(let i=0; i<input.length; i++){
+            input[i].style.borderColor='hsl(0, 100%, 67%)'
+            label.forEach((e)=>{
+                        e.style.color='hsl(0, 100%, 67%)'})
+                    
+          }
+    }
+    else if (monthInput.value === ''){
+        mInvalid.textContent='this field is required'
+        for(let i=0; i<input.length; i++){
+            input[i].style.borderColor='hsl(0, 100%, 67%)'
+            label.forEach((e)=>{
+                        e.style.color='hsl(0, 100%, 67%)'})
+                    
+          }
+    }
+    else{
+        mInvalid.textContent=''
+        for(let i=0; i<input.length; i++){
+            input[i].style.borderColor=''
+            label.forEach((e)=>{
+                        e.style.color=''})
+                    
+          }
+    }
+    return;
+})
+
+yearInput.addEventListener('input', (e)=>{
+    if(yearInput.value > 2023){
+        yInvalid.textContent='must be in the past'
+        for(let i=0; i<input.length; i++){
+            input[i].style.borderColor='hsl(0, 100%, 67%)'
+            label.forEach((e)=>{
+                        e.style.color='hsl(0, 100%, 67%)'})
+                    
+          }
+    }
+    else if (yearInput.value === ''){
+        yInvalid.textContent='this field is required'
+        for(let i=0; i<input.length; i++){
+            input[i].style.borderColor='hsl(0, 100%, 67%)'
+            label.forEach((e)=>{
+                        e.style.color='hsl(0, 100%, 67%)'})
+                    
+          }
+    }
+    else{
+        yInvalid.textContent=''
+        for(let i=0; i<input.length; i++){
+            input[i].style.borderColor=''
+            label.forEach((e)=>{
+                        e.style.color=''})
+                    
+          }
+    }
+    return;
+})
+
+
+// output
+const icon = document.querySelector('.icon');
 const spanDate = document.querySelector('.s-day')
 const spanMonth = document.querySelector('.s-month')
 const spanYear = document.querySelector('.s-year')
-const label = document.querySelectorAll('.label');
+
+const currentDate = new Date()
+const day = currentDate.getDate()
+const month = currentDate.getMonth()+1;
+const year = currentDate.getFullYear()
+
+console.log(year)
+
+const userDay = day-dayInput.value;
+const userMonth = month-monthInput.value;
+const userYear = year-yearInput.value;
+
+console.log(userYear)
 
 
-const inputs = [day, month, year];
-const span = [spanDate, spanMonth, spanYear];
+icon.addEventListener('click', (e)=>{
+    if(e){
+        icon.style.backgroundColor='black'
+        spanDate.textContent = userDay;
+        spanMonth.textContent = userMonth;
+        spanYear.textContent = userYear;
 
-   function updateSpan(e) {
-     for(let i =0; i<inputs.length; i++){
-     if(inputs[i].value === " "){
-        span[i].textContent ='--'
-     }
-     else{span[i].textContent = inputs[i].value}
-   }
-   if(day.value > 31){
-    document.querySelector('.d-invalid').classList.remove('hidden')
-   }else{document.querySelector('.d-invalid').classList.add('hidden')}
-
-   if(month.value > 12){
-    document.querySelector('.m-invalid').classList.remove('hidden')
-   }else{document.querySelector('.m-invalid').classList.add('hidden');
-   }
-
-   if(year.value > 2023){
-    document.querySelector('.y-invalid').classList.remove('hidden')
-   }else{document.querySelector('.y-invalid').classList.add('hidden')
-}
-
-    if (day.value > 31 || month.value > 12 || year.value >2023){
-          label.forEach((e)=>{
-        e.style.color='hsl(0, 100%, 67%)'})
-    }else{   label.forEach((e)=>{
-        e.style.color='hsl(0, 1%, 44%)'
-    })}
-}
-   
-   window.addEventListener('DOMContentLoaded',()=>{
-
-    inputs.map((e)=>{
-        e.addEventListener('input', updateSpan);
-        e.addEventListener('focus', (e)=>{
-            e.target.classList.toggle('active')
-            icon.style.backgroundColor='black'
-        })
-        e.addEventListener('blur', (e)=>{
-            e.target.classList.toggle('active')
-            icon.style.backgroundColor='hsl(259, 100%, 65%)'
-        })
-        
-    
-       })
-
-   })
-   
+    }
+    else{icon.style.backgroundColor=''}
+    return;
+})
