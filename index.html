@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="max-lg:text-[75%]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+ <link rel="stylesheet" href="/output.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Age calculator app</title>
+  </style>
+</head>
+<body class="h-screen bg-plgray">
+
+   <main class="flex flex-col items-center justify-center h-full">
+
+    <section class="p-10 rounded-tr-lg rounded-tl-lg rounded-br-[50%] rounded-bl-lg shadow-md bg-white flex flex-col gap-16 relative pr-28">
+
+    <form class="flex gap-5 text-pblack">
+
+    <div>
+      <label for="day" class="text-xs font-bold text-psgray label">DAY</label><br>
+      <input type="number" name="day" id="day" placeholder="DD" class="border-2 w-20 rounded-md p-1.5 font-bold outline-none" min="1">
+      <div class="d-invalid text-xs text-pred hidden">not a valid day</div>
+    </div>
+
+    <div>
+      <label for="month" class="text-xs font-bold text-psgray label">MONTH</label><br>
+      <input type="number" name="month" id="month" placeholder="MM" class="border-2 w-20 rounded-md p-1.5 font-bold outline-none">
+      <div class="m-invalid text-xs text-pred hidden">not a valid month</div>
+
+    </div>
+
+    <div>
+      <label for="year" class="text-xs font-bold text-psgray label">YEAR</label><br>
+      <input type="number" name="year" id="year" placeholder="YYYY" class="border-2 w-20 rounded-md p-1.5 font-bold outline-none">
+      <div class="y-invalid text-xs text-pred hidden">must be in past</div>
+
+    </div>
+
+    <span class="w-80 h-[1px] bg-plgray absolute top-[134px] max-lg:top-[100px]">&nbsp;</span>
+
+  </form>
+
+    <div>
+      <h2 class="font-bold text-5xl"><span class="years text-ppurple font-extrabold pr-2 s-year">--</span>years</h2>
+      <h2 class="text-5xl font-bold"><span class="months text-ppurple font-extrabold pr-2 s-month">--</span>months</h2>
+      <h2 class="font-bold text-5xl"><span class="days text-ppurple font-extrabold pr-2 s-day">--</span>days</h2>
+
+    </div>
+    <img src="/assets/images/icon-arrow.svg" alt="icon-arrow" class="absolute top-28 right-8 bg-ppurple rounded-full p-2 w-10 h-10 icon">
+  </div>
+  </section>
+   </main>
+  
+   <script src="script.js"></script>
+</body>
+</html>

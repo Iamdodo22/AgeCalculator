@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .active{
+        @apply border-ppurple;
+    }
+    
+    .error{
+        @apply text-pred;
+    }
+    
+}
