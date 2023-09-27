@@ -129,9 +129,9 @@ const userYear = year-yearInput.value;
 icon.addEventListener('click', (e)=>{
     if(e){
         icon.style.backgroundColor='black'
-        spanDate.textContent = userDay;
-        spanMonth.textContent = userMonth;
-        spanYear.textContent = userYear;
+        spanDate.textContent = userDay-dayInput.value;
+        spanMonth.textContent = userMonth-monthInput.value;
+        spanYear.textContent = userYear-yearInput.value;
 
     }
     else{icon.style.backgroundColor=''}
