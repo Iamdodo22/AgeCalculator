@@ -121,13 +121,9 @@ const day = currentDate.getDate()
 const month = currentDate.getMonth()+1;
 const year = currentDate.getFullYear()
 
-console.log(year)
-
 const userDay = day-dayInput.value;
 const userMonth = month-monthInput.value;
 const userYear = year-yearInput.value;
-
-console.log(userYear)
 
 
 icon.addEventListener('click', (e)=>{
