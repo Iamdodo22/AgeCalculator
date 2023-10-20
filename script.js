@@ -121,19 +121,19 @@ const day = currentDate.getDate()
 const month = currentDate.getMonth()+1;
 const year = currentDate.getFullYear()
 
-const userDay = day-dayInput.value;
-const userMonth = month-monthInput.value;
-const userYear = year-yearInput.value;
+const userDay = Math.abs(Math.floor(day-dayInput.value));
+const userMonth = Math.abs(Math.floor(month-monthInput.value));
+const userYear = Math.abs(Math.floor(year-yearInput.value));
 
 
 icon.addEventListener('click', (e)=>{
     if(e){
-        icon.style.backgroundColor='black'
-        spanDate.textContent = userDay-dayInput.value;
-        spanMonth.textContent = userMonth-monthInput.value;
-        spanYear.textContent = userYear-yearInput.value;
+        e.target.style.backgroundColor='black'
+        spanDate.textContent =Math.abs(Math.floor(userDay-dayInput.value));
+        spanMonth.textContent =Math.abs(Math.floor(userMonth-monthInput.value));
+        spanYear.textContent =Math.abs(Math.floor(userYear-yearInput.value));
 
     }
-    else{icon.style.backgroundColor=''}
+    else{e.target.style.backgroundColor=''}
     return;
 })
