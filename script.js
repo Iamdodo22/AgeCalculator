@@ -121,19 +121,24 @@ const day = currentDate.getDate()
 const month = currentDate.getMonth()+1;
 const year = currentDate.getFullYear()
 
-const userDay = Math.abs(Math.floor(day-dayInput.value));
-const userMonth = Math.abs(Math.floor(month-monthInput.value));
-const userYear = Math.abs(Math.floor(year-yearInput.value));
 
 
 icon.addEventListener('click', (e)=>{
+    let monthCal = month - Number(monthInput.value);
+    const calBirthMonth = monthCal > 0 ? monthCal : monthCal + Number(monthInput.value);
+    let dayCal = day - Number(dayInput.value);
+    const calBirthDay = () =>{
+        if(month === (9||4||6||11))return   Math.abs(dayCal - 30 );
+        else return Math.abs(dayCal - 31);
+    }
+
+
     if(e){
         e.target.style.backgroundColor='black'
-        spanDate.textContent =Math.abs(Math.floor(userDay-dayInput.value));
-        spanMonth.textContent =Math.abs(Math.floor(userMonth-monthInput.value));
-        spanYear.textContent =Math.abs(Math.floor(userYear-yearInput.value));
-
+        spanDate.textContent = calBirthDay();
+        spanMonth.textContent = calBirthMonth;
+        spanYear.textContent =Math.abs(Math.floor(year- Number(yearInput.value)));
+        console.log(day,dayInput.value)
     }
     else{e.target.style.backgroundColor=''}
-    return;
 })
