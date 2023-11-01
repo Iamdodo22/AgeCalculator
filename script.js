@@ -116,29 +116,24 @@ const spanDate = document.querySelector('.s-day')
 const spanMonth = document.querySelector('.s-month')
 const spanYear = document.querySelector('.s-year')
 
-const currentDate = new Date()
-const day = currentDate.getDate()
-const month = currentDate.getMonth()+1;
-const year = currentDate.getFullYear()
+////////////////////////////////
 
 
 
 icon.addEventListener('click', (e)=>{
-    let monthCal = month - Number(monthInput.value);
-    const calBirthMonth = monthCal > 0 ? monthCal : monthCal + 12;
-    let dayCal = day - Number(dayInput.value);
-    const calBirthDay = () =>{
-        if(month === (9||4||6||11))return   Math.abs(dayCal - 30 );
-        else return Math.abs(dayCal - 31);
-    }
-
-
+    const date = Date.now()
+    let userdate = new Date(yearInput.value,monthInput.value-1,dayInput.value);
+    userdate = userdate.getTime()
+   const ageCalc = new Date(date - userdate)
+    const userYear = ageCalc.getFullYear() -1970;
+    const userMonth = ageCalc.getMonth();
+    const userDate = ageCalc.getDate() -1;
+   
     if(e){
         e.target.style.backgroundColor='black'
-        spanDate.textContent = calBirthDay();
-        spanMonth.textContent = calBirthMonth;
-        spanYear.textContent =Math.abs(Math.floor(year- Number(yearInput.value)));
-        console.log(day,dayInput.value)
+        spanDate.textContent = userDate;
+        spanMonth.textContent = userMonth;
+        spanYear.textContent = userYear;
     }
     else{e.target.style.backgroundColor=''}
 })
