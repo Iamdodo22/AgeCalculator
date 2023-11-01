@@ -125,7 +125,7 @@ const year = currentDate.getFullYear()
 
 icon.addEventListener('click', (e)=>{
     let monthCal = month - Number(monthInput.value);
-    const calBirthMonth = monthCal > 0 ? monthCal : monthCal + Number(monthInput.value);
+    const calBirthMonth = monthCal > 0 ? monthCal : monthCal + 12;
     let dayCal = day - Number(dayInput.value);
     const calBirthDay = () =>{
         if(month === (9||4||6||11))return   Math.abs(dayCal - 30 );
